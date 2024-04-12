@@ -23,5 +23,8 @@ public class Cab {
     int noOfSeats;
     double fairPerKm;
 
+    @OneToOne
+    @JoinColumn
+    Driver driver;
 
 }
