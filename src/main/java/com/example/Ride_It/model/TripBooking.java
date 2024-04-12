@@ -18,7 +18,7 @@ import java.util.Date;
 public class TripBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    int id;
+    String id;
     String source;
     String destination;
     Double totalKm;
@@ -28,4 +28,11 @@ public class TripBooking {
     TripStatus tripStatus;
     @CreationTimestamp
     Date bookedAt;
+    @ManyToOne
+    @JoinColumn
+    Customer customer;
+
+    @ManyToOne
+    @JoinColumn
+    Driver driver;
 }
