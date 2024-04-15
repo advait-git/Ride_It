@@ -18,6 +18,8 @@ public class Cab {
     int id;
     String carModel;
     String company;
+    @Column(unique = true ,nullable = false)
+    String cabNo;
     @Enumerated(EnumType.STRING)
     CarType carType;
     int noOfSeats;
