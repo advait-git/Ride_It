@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name="driver")
+@Builder
 public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +24,7 @@ public class Driver {
     int age;
     String panNumber;
     @Column(unique = true , nullable = false)
-    String PhNo;
+    String phNo;
 
     double rating;
 

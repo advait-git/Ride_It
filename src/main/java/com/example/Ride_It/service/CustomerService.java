@@ -13,14 +13,11 @@ public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
     public CustomerResponse addCustomer(CustomerRequest customerRequest) {
-//        Customer customer = new Customer();
-//        customer.setName(customerRequest.getName());
-//        customer.setAge(customerRequest.getAge());
-//        customer.setEmail(customerRequest.getEmail());
-//        customer.setAddress(customerRequest.getAddress());
-//        customer.setGender(customerRequest.getGender());
+        //request dto to entity
        Customer customer = CustomerTransformer.customerRequestToCustomer(customerRequest);
+       //customer saved
        Customer savedCustomer = customerRepository.save(customer);
+       //entity to response dto
        return CustomerTransformer.customerToCustomerResponse(savedCustomer);
     }
 
