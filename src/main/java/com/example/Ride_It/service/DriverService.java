@@ -7,14 +7,15 @@ import com.example.Ride_It.model.Driver;
 import com.example.Ride_It.repository.DriverRepository;
 import com.example.Ride_It.transformer.CabTransformer;
 import com.example.Ride_It.transformer.DriverTransformer;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class DriverService {
 
-    @Autowired
-    DriverRepository driverRepository;
+   public final DriverRepository driverRepository;
 
     public String addDriver(DriverRequest driverRequest) {
         //convert cabreq to entity from driver as driver hab cabReq

@@ -4,6 +4,7 @@ import com.example.Ride_It.dto.request.CustomerRequest;
 import com.example.Ride_It.dto.request.UpdateCustomerEmail;
 import com.example.Ride_It.dto.response.CustomerResponse;
 import com.example.Ride_It.service.CustomerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +12,17 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/customer")
+@RequiredArgsConstructor
 public class CustomerController {
-    @Autowired
-    CustomerService customerService;
+//    @Autowired
+//    CustomerService customerService;
+
+    private final CustomerService customerService;
+    //made a constuctor injection
+//    public CustomerController (CustomerService customerService){
+//        this.customerService=customerService;
+//    }
+
     @PostMapping
     public ResponseEntity<CustomerResponse> addCustomer(@RequestBody CustomerRequest customerRequest){
         CustomerResponse response=customerService.addCustomer(customerRequest);
