@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
@@ -32,5 +35,15 @@ public class CustomerService {
     public String deleteCustomer(int Id){
         customerRepository.deleteCustomerRepo(Id);
         return "customer deleted";
+    }
+
+    public List<CustomerResponse> getCustomerByGenderAndAgeGreaterThan(String gender, int age) {
+        List<Customer> customers=customerRepository.findByGenderAndAgeGreaterThan(gender,age);
+
+        List<CustomerResponse> customerResponses = new ArrayList<>();
+        for(Customer customer:customers){
+            customerResponses.add(CustomerTransformer.customerToCustomerResponse(customer));
+        }
+        return customerResponses;
     }
 }

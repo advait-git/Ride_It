@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/customer")
 @RequiredArgsConstructor
@@ -27,6 +29,12 @@ public class CustomerController {
     public ResponseEntity<CustomerResponse> addCustomer(@RequestBody CustomerRequest customerRequest){
         CustomerResponse response=customerService.addCustomer(customerRequest);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
+    }
+    @GetMapping("/gender/{gender}/age/{age}")
+    public ResponseEntity<List<CustomerResponse>> getCustomerByGenderAndAgeGreaterThan(@PathVariable String gender ,
+                                                                                       @PathVariable int age){
+        List<CustomerResponse> customerResponses = customerService.getCustomerByGenderAndAgeGreaterThan(gender,age);
+        return new ResponseEntity<>(customerResponses,HttpStatus.FOUND);
     }
     @PutMapping
     public ResponseEntity<String> updateCustomer(@RequestBody UpdateCustomerEmail updateCustomerEmail){
