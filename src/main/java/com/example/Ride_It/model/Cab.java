@@ -12,6 +12,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name="cab")
+@Builder
 public class Cab {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
