@@ -11,6 +11,8 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name="coupon")
+@Builder
+
 public class Coupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

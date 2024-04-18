@@ -6,7 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
+    @Transactional
+    @Modifying
+    @Query(value = "Select * from customer where gender =:gender and age>=:age",nativeQuery = true)
+    List<Customer> findByGenderAndAgeGreaterThan(String gender,int age);
     @Transactional
     @Modifying
     @Query(value="update customer set email=:email where id=:Id", nativeQuery = true)
