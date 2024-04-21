@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
-    public final CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
 
     public CustomerResponse addCustomer(CustomerRequest customerRequest) {

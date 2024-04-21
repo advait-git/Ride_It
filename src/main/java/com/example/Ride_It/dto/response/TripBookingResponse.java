@@ -1,43 +1,31 @@
-package com.example.Ride_It.model;
+package com.example.Ride_It.dto.response;
 
 import com.example.Ride_It.Enum.TripStatus;
-import jakarta.persistence.*;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
-@Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table(name="booking")
 @Builder
-
-public class TripBooking {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id;
-    String bookingId;
+public class TripBookingResponse {
+    String bookingId; //uuid
     String source;
     String destination;
     Double totalKm;
     Double totalFair;
-
-    @Enumerated(EnumType.STRING)
     TripStatus tripStatus;
-
-    @CreationTimestamp
     Date bookedAt;
 
-    @ManyToOne
-    @JoinColumn
-    Customer customer;
+    CustomerResponse customerResponse;
 
-    @ManyToOne
-    @JoinColumn
-    Driver driver;
+    DriverResponse driverResponse; //cab response is in driver response
+
 }

@@ -13,6 +13,9 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Modifying
     @Query(value = "Select * from customer where gender =:gender and age>=:age",nativeQuery = true)
     List<Customer> findByGenderAndAgeGreaterThan(String gender,int age);
+
+    Customer findByEmail(String email);
+
     @Transactional
     @Modifying
     @Query(value="update customer set email=:email where id=:Id", nativeQuery = true)
