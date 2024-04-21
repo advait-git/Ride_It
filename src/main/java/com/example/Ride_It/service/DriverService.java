@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DriverService {
 
-   public final DriverRepository driverRepository;
+    private final DriverRepository driverRepository;
 
     public String addDriver(DriverRequest driverRequest) {
         //convert cabreq to entity from driver as driver hab cabReq

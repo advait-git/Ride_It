@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 
 public class DriverController {
-    public final DriverService driverService;
+    private final DriverService driverService;
 
 
     @PostMapping

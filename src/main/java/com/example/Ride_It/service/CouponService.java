@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 
 public class CouponService {
-    public final CouponRepository couponRepository;
+    private final CouponRepository couponRepository;
     public String addCoupon(String couponCode, int discount) {
         Coupon coupon= CouponTransformer.prepareCoupon(couponCode,discount);
         couponRepository.save(coupon);
