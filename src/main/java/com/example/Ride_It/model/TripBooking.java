@@ -20,7 +20,7 @@ import java.util.Date;
 public class TripBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id;
+    int id;
     String bookingId;
     String source;
     String destination;
